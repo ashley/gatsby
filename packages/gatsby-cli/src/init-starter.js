@@ -31,9 +31,9 @@ const shouldUseYarn = () => {
 const gitInit = async rootPath => {
   report.info(`Initialising git in ${rootPath}`)
 
-  let curDir = rootPath
+  let curDir = sysPath.normalize(rootPath);
 
-  while (curDir.split(`/`).length > 1) {
+  while (curDir !== "/" && curDir !== "C:\\") {
     if (existsSync(sysPath.join(curDir, `.git`))) {
       return
     }
